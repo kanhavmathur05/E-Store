@@ -1,0 +1,46 @@
+<!-- Header -->
+<!-- <mat-toolbar color="primary"><span>E-Store</span>
+    <mat-form-field style="padding-left: 20%; width: 50%;">
+        <input matInput/>
+    </mat-form-field>
+      <button mat-icon-button aria-label="Login Icon">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Login Icon">
+        <mat-icon>login</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Login Icon">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+</mat-toolbar> -->
+<!-- <div *ngFor="let product of productsList" style="margin: 20px;">
+    <mat-card style="width: 25%;">
+        <p>{{product.id}}</p>
+        <img src={{product.productImage}} style="width: 100%;" />
+        <p style="justify-content: center;">{{product.description}}</p>
+        <p>{{product.productName}}</p>
+        <p>{{product.price}}</p>
+    </mat-card>
+</div> -->
+<mat-grid-list cols=3>
+    <mat-grid-tile *ngFor="let product of productsList">
+        <mat-card>
+            <!-- <p>{{product.id}}</p> -->
+            <img src={{product.productImage}} style="width: 100%;" routerLink="product/{{product.id}}"/>
+            <!-- <p>{{product.description}}</p> -->
+            <p>{{product.productName}}</p>
+            <p>{{product.price}}</p>
+            <button mat-raised-button color="primary" style="width: 100%;">Add To Cart</button>
+        </mat-card>    
+    </mat-grid-tile>    
+</mat-grid-list>
+
+<!-- Footer -->
+<!-- <p>Home Component</p>
+    <mat-card *ngIf="singleProduct">
+        <p>{{product.id}}</p> -->
+        <!-- <img src={{showSingleProduct.productImage}} style="width: 100%;" /> -->
+        <!-- <p>{{product.description}}</p> -->
+        <!-- <p>{{showSingleProduct.productName}}</p> -->
+        <!-- <p>{{showSingleProduct.price}}</p> -->
+    <!-- </mat-card> -->

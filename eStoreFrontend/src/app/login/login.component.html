@@ -1,0 +1,47 @@
+<div>
+    <mat-card>
+        <div>
+            <button mat-button style="width: 50%;" (click)="loginOption()">Login</button>
+            <button mat-button style="width: 50%;" (click)="registerOption()">Registration</button>
+        </div>
+        <div *ngIf="login">   <!--LOGIN-->
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email"/>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" type="password"/>
+            </mat-form-field>
+            <button mat-raised-button color="primary" style="width: 100%;">Login</button>
+        </div>
+        <div *ngIf="!login"> <!--REGISTRATION-->
+            <mat-form-field>
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="FirstName"/>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>LastName</mat-label>
+                <input matInput placeholder="LastName"/>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email"/>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>ContactNumber</mat-label>
+                <input matInput placeholder="ContactNumber"/>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" type="password"/>
+            </mat-form-field>
+            <button mat-raised-button color="primary" style="width: 100%;">Register</button>
+        </div>
+    </mat-card>
+
+    <!-- <mat-card>
+        <p>Registration</p>
+
+    </mat-card> -->
+</div>

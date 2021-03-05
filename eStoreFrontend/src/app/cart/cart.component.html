@@ -1,0 +1,9 @@
+<div *ngFor="let product of productsList" style="margin: 20px;">
+    <mat-card>
+        <p>{{product.id}}</p>
+        <img src={{product.productImage}} style="width: 20%;" />
+        <p style="justify-content: center;">{{product.description}}</p>
+        <p>{{product.productName}}</p>
+        <p>{{product.price}}</p>
+    </mat-card>
+</div>
