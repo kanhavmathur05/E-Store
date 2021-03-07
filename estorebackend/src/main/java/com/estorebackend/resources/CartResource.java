@@ -5,8 +5,6 @@ import com.estorebackend.entities.CartProducts;
 import com.estorebackend.services.CartProductsService;
 import com.estorebackend.services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -51,6 +49,6 @@ public class CartResource {
     public ResponseEntity<Cart> getCart(@PathVariable int userId)
     {
         Cart cart = cartService.getCartForUser(userId);
-        ResponseEntity.status(HttpStatus.OK).body(cart);
+        return ResponseEntity.status(HttpStatus.OK).body(cart);
     }
 }
