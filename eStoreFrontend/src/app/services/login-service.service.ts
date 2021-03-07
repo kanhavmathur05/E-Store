@@ -10,10 +10,19 @@ import { SERVER_URL } from './environmentvariable'
 })
 export class LoginServiceService {
 
-  authenticationRequest:AuthenticationRequest;
+  // authenticationRequest:AuthenticationRequest;
   constructor(private http:HttpClient) { }
 
-  login(authenticationRequest):Observable<User> {
-    return this.http.post<User>("http://localhost:8080/authenticate",authenticationRequest);
+  login(authenticationRequest:AuthenticationRequest):Observable<User> {
+       
+    // authenticationRequest.email=btoa(authenticationRequest.email);
+    console.log('encoded user details:::::',authenticationRequest.email);
+    console.log('encoded user details:::::',authenticationRequest.password);
+    authenticationRequest.email=btoa(authenticationRequest.email);
+        authenticationRequest.password=btoa(authenticationRequest.password);
+        console.log('Method invoked!!');
+        console.log('encoded user details:::::',authenticationRequest.email);
+        console.log('encoded user details:::::',authenticationRequest.password);
+    return this.http.post<User>(SERVER_URL+"authenticate",authenticationRequest);
   }
 }

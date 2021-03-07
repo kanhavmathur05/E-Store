@@ -3,6 +3,7 @@ package com.estorebackend.services.impl;
 import com.estorebackend.entities.Cart;
 import com.estorebackend.entities.Users;
 import com.estorebackend.repositories.UserRepository;
+import com.estorebackend.services.CartService;
 import com.estorebackend.services.UserService;
 import com.estorebackend.vm.AuthenticationRequest;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +20,16 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    CartService cartService;
+
     @Override
     public Users registerNewUser(Users newUser) {
+        newUser.setRole("ROLE_USER");
         newUser = userRepository.save(newUser);
         Cart newCart = new Cart();
         newCart.setUserId(newUser.getId());
+        cartService.createCartForNewUser(newCart);
         return newUser;
     }
 
@@ -45,8 +51,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Users getUserByCredentails(AuthenticationRequest authenticationRequest) {
-        String email = Base64.getDecoder().decode(authenticationRequest.getUserEmail()).toString();
-        String password = Base64.getDecoder().decode(authenticationRequest.getPassword()).toString();
+        String email = new String(Base64.getDecoder().decode(authenticationRequest.getEmail()));
+        String password = new String(Base64.getDecoder().decode(authenticationRequest.getPassword()));
         Users user = userRepository.findByEmailAndPassword(email, password);
         return user;
     }

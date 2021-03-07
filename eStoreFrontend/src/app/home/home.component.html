@@ -30,7 +30,7 @@
             <!-- <p>{{product.description}}</p> -->
             <p>{{product.productName}}</p>
             <p>{{product.price}}</p>
-            <button mat-raised-button color="primary" style="width: 100%;">Add To Cart</button>
+            <button mat-raised-button color="primary" style="width: 100%;" (click)="addToCart(product.id)">Add To Cart</button>
         </mat-card>    
     </mat-grid-tile>    
 </mat-grid-list>

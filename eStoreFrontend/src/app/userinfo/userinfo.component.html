@@ -1,0 +1,54 @@
+<mat-grid-list cols="2" rowHeight="3:1">
+<mat-card style=" margin: 20px; height:400px">
+    <mat-card-content>
+        <mat-grid-tile>
+            <!-- User Info -->
+                    <mat-list role="list">
+                        <mat-list-item><p>ID:</p> {{user.id}}</mat-list-item>
+                        <mat-list-item><p>FirstName:</p> {{user.firstName}}</mat-list-item>
+                        <mat-list-item><p>LastName:</p> {{user.lastName}}</mat-list-item>
+                        <mat-list-item><p>Email:</p> {{user.email}}</mat-list-item>
+                        <mat-list-item><p>Contact Number:</p> {{user.contactNumber}}</mat-list-item>
+                        <mat-list-item><p>Password:</p> {{user.password}}</mat-list-item>
+                        <mat-list-item><p>Role:</p> {{user.role}}</mat-list-item>
+                    </mat-list>
+                </mat-grid-tile>
+                <mat-grid-tile>
+
+                <div *ngFor="let address of addresses">
+                    <mat-card>
+                        <mat-list>
+                            <mat-list-item role="list-item">{{address.userAddress}}</mat-list-item>
+                            <mat-list-item role="list-item">{{address.city}}</mat-list-item>
+                            <mat-list-item role="list-item">{{address.state}}</mat-list-item>
+                            <mat-list-item role="list-item">{{address.country}}</mat-list-item>
+                            <mat-list-item role="list-item">{{address.pincode}}</mat-list-item>                            
+                        </mat-list>
+                    </mat-card>
+                    <br/>
+                </div>
+
+
+
+
+
+                        <!-- <mat-list role="list" >
+                            <mat-list-item *ngFor="let address of addresses">
+                                <mat-card style="margin: 50px;">
+                                    <mat-list role="list">
+                                        <mat-list-item role="list-item">{{address.userAddress}}</mat-list-item>
+                                        <mat-list-item role="list-item">{{address.city}}</mat-list-item>
+                                        <mat-list-item role="list-item">{{address.state}}</mat-list-item>
+                                        <mat-list-item role="list-item">{{address.country}}</mat-list-item>
+                                        <mat-list-item role="list-item">{{address.pincode}}</mat-list-item>
+                                    </mat-list>
+
+                                </mat-card>
+                            </mat-list-item>
+                        </mat-list> -->
+                    <!-- List of mat card -->
+                        <!-- Addresses List  -->
+                </mat-grid-tile>
+    </mat-card-content>
+</mat-card>  
+</mat-grid-list>

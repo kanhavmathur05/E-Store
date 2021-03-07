@@ -5,5 +5,8 @@
         <p style="justify-content: center;">{{product.description}}</p>
         <p>{{product.productName}}</p>
         <p>{{product.price}}</p>
+        <button mat-button style="margin-left: 90%;" (click)="removeItemFronUserCart()"><mat-icon>delete</mat-icon></button>
     </mat-card>
 </div>
+<!-- <p>Order Total: {{orderTotal}}</p> -->
+<button mat-raised-button color="primary" style="width: 90%; margin-left: 5%; margin-bottom: 20px;">Place Order</button>

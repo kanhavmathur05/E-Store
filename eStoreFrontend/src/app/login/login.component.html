@@ -1,43 +1,131 @@
 <div>
     <mat-card>
         <div>
-            <button mat-button style="width: 50%;" (click)="loginOption()">Login</button>
-            <button mat-button style="width: 50%;" (click)="registerOption()">Registration</button>
+            <button mat-button style="width: 50%;" (click)="loginOption()" required>Login</button>
+            <button mat-button style="width: 50%;" (click)="registerOption()" required>Registration</button>
         </div>
-        <div *ngIf="login">   <!--LOGIN-->
-            <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="Email"/>
-            </mat-form-field>
-            <mat-form-field>
-                <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" type="password"/>
-            </mat-form-field>
-            <button mat-raised-button color="primary" style="width: 100%;">Login</button>
-        </div>
+
+
         <div *ngIf="!login"> <!--REGISTRATION-->
-            <mat-form-field>
+                <mat-list>
+                    <mat-list-item>
+                        <mat-form-field>
+                            <mat-label>First Name</mat-label>
+                            <input [(ngModel)]="user.firstName" matInput placeholder="FirstName" required/>
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-form-field>
+                            <mat-label>LastName</mat-label>
+                            <input [(ngModel)]="user.lastName" matInput placeholder="LastName" required/>
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-form-field>
+                            <mat-label>Email</mat-label>
+                            <input [(ngModel)]="user.email" matInput placeholder="Email" required/>
+                        </mat-form-field>
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-form-field>
+                            <mat-label>ContactNumber</mat-label>
+                            <input [(ngModel)]="user.contactNumber" matInput placeholder="ContactNumber" required/>
+                        </mat-form-field>                
+                    </mat-list-item>
+                    <mat-list-item>
+                        <mat-form-field>
+                            <mat-label>Password</mat-label>
+                            <input [(ngModel)]="user.password" matInput placeholder="Password" type="password" required/>
+                        </mat-form-field>                
+                    </mat-list-item>
+                    <mat-list-item>
+                        <button mat-raised-button color="primary" style="width: 100%;" type="submit" (click)="registerUser()">Register</button>                
+                    </mat-list-item>
+                </mat-list>            
+        </div>
+
+
+
+        <div *ngIf="login">   <!--LOGIN-->
+            <mat-list>
+                <mat-list-item>
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input [(ngModel)]="authenticationRequest.email" matInput placeholder="Email" required/>
+                    </mat-form-field>
+                </mat-list-item>
+                <mat-list-item>
+                    <mat-form-field>
+                        <mat-label>Password</mat-label>
+                        <input [(ngModel)]="authenticationRequest.password" matInput placeholder="Password" type="password" required/>
+                    </mat-form-field>                    
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-raised-button color="primary" style="width: 100%;" (click)="loginUser()">Login</button>                    
+                </mat-list-item>
+            </mat-list>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div *ngIf="!login"> REGISTRATION -->
+            <!-- <mat-form-field>
                 <mat-label>First Name</mat-label>
-                <input matInput placeholder="FirstName"/>
+                <input [(ngModel)]="user.firstName" matInput placeholder="FirstName"/>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>LastName</mat-label>
-                <input matInput placeholder="LastName"/>
+                <input [(ngModel)]="user.lastName" matInput placeholder="LastName"/>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="Email"/>
+                <input [(ngModel)]="user.email" matInput placeholder="Email"/>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>ContactNumber</mat-label>
-                <input matInput placeholder="ContactNumber"/>
+                <input [(ngModel)]="user.contactNumber" matInput placeholder="ContactNumber"/>
             </mat-form-field>
             <mat-form-field>
                 <mat-label>Password</mat-label>
-                <input matInput placeholder="Password" type="password"/>
+                <input [(ngModel)]="user.password" matInput placeholder="Password" type="password"/>
             </mat-form-field>
-            <button mat-raised-button color="primary" style="width: 100%;">Register</button>
-        </div>
+            <button mat-raised-button color="primary" style="width: 100%;" (click)="registerUser()">Register</button>
+        </div> -->
+
+
+
+        <!-- <div *ngIf="login">   LOGIN -->
+            <!-- <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input [(ngModel)]="authenticationRequest.email" matInput placeholder="Email"/>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input [(ngModel)]="authenticationRequest.password" matInput placeholder="Password" type="password"/>
+            </mat-form-field>
+            <button mat-raised-button color="primary" style="width: 100%;" (click)="loginUser()">Login</button>
+        </div> -->
+
     </mat-card>
 
     <!-- <mat-card>

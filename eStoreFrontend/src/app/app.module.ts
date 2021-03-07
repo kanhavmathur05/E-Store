@@ -18,6 +18,12 @@ import { CartComponent } from './cart/cart.component';
 import { UsermanagementComponent } from './usermanagement/usermanagement.component';
 import { UserinfoComponent } from './userinfo/userinfo.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { OrderHistoryComponent } from './order-history/order-history.component';
+import { ProductManagementComponent } from './product-management/product-management.component';
+import { AddProductComponent } from './add-product/add-product.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,7 +32,12 @@ const appRoutes: Routes = [
   { path:'product/:id', component:ShowProductComponent},
   { path:'cart/:id', component:CartComponent},
   { path:'userinfo/:id', component:UserinfoComponent },
-  { path:'usermanagement', component:UsermanagementComponent }
+  { path:'admin/usermanagement', component:UsermanagementComponent },
+  { path:'admin/dashboard', component:AdminDashboardComponent },
+  { path:'order-history/:id',component:OrderHistoryComponent },
+  { path:'admin/products', component:ProductManagementComponent },
+  { path:'admin/addproduct', component:AddProductComponent}
+
 ];
 
 @NgModule({
@@ -40,7 +51,10 @@ const appRoutes: Routes = [
     CartComponent,
     UsermanagementComponent,
     UserinfoComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    OrderHistoryComponent,
+    ProductManagementComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +64,10 @@ const appRoutes: Routes = [
     ),
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    HttpClientModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

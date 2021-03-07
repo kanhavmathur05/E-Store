@@ -16,4 +16,10 @@ public class CartServiceImpl implements CartService {
     public Cart getCartForUser(int userId) {
         return cartRepository.findByUserId(userId);
     }
+
+    @Override
+    public Cart createCartForNewUser(Cart newCart) {
+        return cartRepository.save(newCart);
+
+    }
 }

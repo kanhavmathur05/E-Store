@@ -9,20 +9,34 @@ import { User } from '../models/user';
 })
 export class HeaderComponent implements OnInit {
 
-  login:boolean;
+  loggedIn:boolean;
   user:User={
     id:123,
     firstName:"adsfafds",
     lastName:"afasdf",
     email:"kasdjfnksad",
     password:"asdfaf",
-    contactNumber:1231
+    contactNumber:1231,
+    role:"ROLE_USER"
   };
   constructor(private router:Router) { 
-    this.login=false;
-    console.log('ROUTER URL By CONSOLE---->',this.router.url);
+    if(sessionStorage.getItem('userId')!=null)
+    {
+      this.loggedIn=true;
+    }
+    else
+    {
+      this.loggedIn=false;
+    }
+//    console.log('ROUTER URL By CONSOLE---->',this.router.url);
   }
-
+  logoutUser()
+  {
+    sessionStorage.clear();
+    this.loggedIn=false;
+    this.router.navigate(['']);
+    window.location.reload();
+  }
   ngOnInit(): void {
   }
 

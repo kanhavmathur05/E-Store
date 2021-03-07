@@ -13,15 +13,17 @@ export class ProductServiceService {
 
   constructor(private http:HttpClient) { }
 
-  addProduct(product:Products):Observable<Products> {
+  addProduct(product:Products,fileName:string):Observable<Products> {
+    product.productImage=fileName;
+    console.log('ADD PRODUCT SERVICE METHOD:::::',product);
     return this.http.post<Products>(SERVER_URL+"/admin/add-product",product);
   }
 
-  viewProduct(id:number):Observable<Products> {
+  viewProduct(id:string):Observable<Products> {
     return this.http.get<Products>(SERVER_URL+"/view-product/"+id);
   }
 
-  deleteProduct(id:number):Observable<Products> {
+  deleteProduct(id:string):Observable<Products> {
     return this.http.delete<Products>(SERVER_URL+"/admin/delete-product/"+id);
   }
 
@@ -32,4 +34,7 @@ export class ProductServiceService {
   updateProduct(product:Products):Observable<Products> {
     return this.http.post<Products>(SERVER_URL+"admin/update-product",product);
   }
+
+  
+
 }

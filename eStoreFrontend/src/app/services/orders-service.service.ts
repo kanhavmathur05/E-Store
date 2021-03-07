@@ -11,7 +11,7 @@ export class OrdersServiceService {
 
   constructor(private http:HttpClient) { }
 
-  getUserOrderHistory(id:number):Observable<Orders[]> {
+  getUserOrderHistory(id:string):Observable<Orders[]> {
     return this.http.get<Orders[]>(SERVER_URL+"/order-history/"+id);
   }
   

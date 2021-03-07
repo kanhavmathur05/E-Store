@@ -3,8 +3,8 @@ export class Address {
     userId:number;
     userAddress:string;
     city:string;
-    State:string;
-    Country:string;
+    state:string;
+    country:string;
     pinCode:number;
     contactPersonNumber:number;
 }

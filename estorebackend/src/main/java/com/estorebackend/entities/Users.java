@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Users {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     private String firstName;
@@ -29,8 +29,6 @@ public class Users {
     }
 
     private int contactNumber;
-//    private LocalDate dateOfBirth;
-//
 //    @OneToMany
 //    private List<Address> addresses;
 

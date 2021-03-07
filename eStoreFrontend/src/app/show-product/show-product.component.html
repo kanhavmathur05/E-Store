@@ -1,14 +1,14 @@
 <div style="height: 100%; display: flex; justify-content: center; align-items: center;">
 <mat-card style="width: 90%;">
+    <!-- THIS IS FOR USER -->
     <mat-grid-list cols="2">
         <mat-grid-tile>    
-            <img src={{product.productImage}} style="width: 50%;" />
+            <img src="assets/productImages/{{product.productImage}}" style="width: 50%;" />
         </mat-grid-tile>
         <mat-grid-tile>
             <ul style="list-style-type: none;">
-                <li>{{product.id}}</li>
-                <li>{{product.description}}</li>
                 <li>{{product.productName}}</li>
+                <li>{{product.description}}</li>
                 <li>{{product.price}}</li>
                 <li>
                     <button mat-raised-button color="primary" style="width: 100%;">Add To Cart</button>
@@ -18,4 +18,5 @@
     </mat-grid-list>
 
 </mat-card>
+
 </div>

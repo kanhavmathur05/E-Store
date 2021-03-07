@@ -15,11 +15,11 @@ export class AddressServiceService {
     return this.http.post<Address>(SERVER_URL+"/add-address",address);
   }
 
-  deleteAddress(id:number):Observable<Address> {
+  deleteAddress(id:string):Observable<Address> {
     return this.http.delete<Address>(SERVER_URL+"/delete-address/"+id);
   }
 
-  getAddress(id:number):Observable<Address> {
+  getAddress(id:string):Observable<Address> {
     return this.http.get<Address>(SERVER_URL+"/address/"+id);
   }
 
@@ -27,7 +27,7 @@ export class AddressServiceService {
     return this.http.post<Address>(SERVER_URL+"/update-address",address);
   }
 
-  getAllAddressesOfUser(id:number):Observable<Address[]> {
+  getAllAddressesOfUser(id:string):Observable<Address[]> {
     return this.http.get<Address[]>(SERVER_URL+"/all-address/"+id);
   }
 }

@@ -1,16 +1,19 @@
 <mat-toolbar color="primary"><span routerLink="/">E-Store</span>
-    <mat-form-field style="padding-left: 20%; width: 50%;" *ngIf="!login">
+    <mat-form-field style="padding-left: 20%; width: 50%;" *ngIf="loggedIn">
         <input matInput/>
     </mat-form-field >
     <div style="padding-left: 15%;">
-      <button mat-icon-button aria-label="Login Icon" [routerLink]="['/cart/',user.id]" *ngIf="!login" >
+      <button mat-icon-button aria-label="Login Icon" [routerLink]="['/cart/',user.id]" *ngIf="loggedIn" >
         <mat-icon>shopping_cart</mat-icon>
       </button>
-      <button mat-icon-button aria-label="Login Icon" routerLink="/login" *ngIf="!login">
+      <button mat-icon-button aria-label="Login Icon" routerLink="/login" *ngIf="!loggedIn">
         <mat-icon>login</mat-icon>
       </button>
-      <button mat-icon-button aria-label="Login Icon" *ngIf="!login">
+      <button mat-icon-button aria-label="Login Icon" *ngIf="loggedIn">
         <mat-icon>account_circle</mat-icon>
+      </button>
+      <button mat-icon-button aria-label="Logout Icon" *ngIf="loggedIn" (click)="logoutUser()">
+        <mat-icon>logout</mat-icon>
       </button>
     </div>
 </mat-toolbar>
