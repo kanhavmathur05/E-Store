@@ -16,19 +16,19 @@ export class ProductServiceService {
   addProduct(product:Products,fileName:string):Observable<Products> {
     product.productImage=fileName;
     console.log('ADD PRODUCT SERVICE METHOD:::::',product);
-    return this.http.post<Products>(SERVER_URL+"/admin/add-product",product);
+    return this.http.post<Products>(SERVER_URL+"admin/add-product",product);
   }
 
   viewProduct(id:string):Observable<Products> {
-    return this.http.get<Products>(SERVER_URL+"/view-product/"+id);
+    return this.http.get<Products>(SERVER_URL+"view-product/"+id);
   }
 
   deleteProduct(id:string):Observable<Products> {
-    return this.http.delete<Products>(SERVER_URL+"/admin/delete-product/"+id);
+    return this.http.delete<Products>(SERVER_URL+"admin/delete-product/"+id);
   }
 
   listAllProducts():Observable<Products[]> {
-    return this.http.get<Products[]>(SERVER_URL+"/list-all-products");
+    return this.http.get<Products[]>(SERVER_URL+"list-all-products");
   }
 
   updateProduct(product:Products):Observable<Products> {

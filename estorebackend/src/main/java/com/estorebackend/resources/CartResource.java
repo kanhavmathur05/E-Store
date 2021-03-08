@@ -4,6 +4,7 @@ import com.estorebackend.entities.Cart;
 import com.estorebackend.entities.CartProducts;
 import com.estorebackend.services.CartProductsService;
 import com.estorebackend.services.CartService;
+import com.estorebackend.vm.CartProductsToShow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class CartResource {
 
@@ -20,7 +22,7 @@ public class CartResource {
     @Autowired
     CartService cartService;
 
-    @PostMapping("/add-product")
+    @PostMapping("/add-product-to-cart")
     public ResponseEntity<CartProducts> addProductToCart(@RequestBody CartProducts cartProducts) {
         CartProducts addedCartProduct = cartProductsService.addProductToCart(cartProducts);
         return ResponseEntity.status(HttpStatus.OK).body(addedCartProduct);
@@ -39,9 +41,9 @@ public class CartResource {
 
     }
 
-    @GetMapping("products-in-user-cart/{userId}")
-    public ResponseEntity<List<CartProducts>> getProductsInUserCart(@PathVariable int userId) {
-        List<CartProducts> productsInUserCart = cartProductsService.findAllProductsInUserCart(userId);
+    @GetMapping("/products-in-user-cart/{userId}")
+    public ResponseEntity<List<CartProductsToShow>> getProductsInUserCart(@PathVariable int userId) {
+        List<CartProductsToShow> productsInUserCart = cartProductsService.findAllProductsInUserCart(userId);
         return ResponseEntity.status(HttpStatus.OK).body(productsInUserCart);
     }
 

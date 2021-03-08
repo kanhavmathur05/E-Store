@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
         // if successfull login
         console.log('UserDetails',this.user);
         sessionStorage.setItem('userId',JSON.stringify(this.user.id));
+        sessionStorage.setItem('userRole',this.user.role);
         // window.location.reload();
         if(data.role==="ROLE_ADMIN")
         {
@@ -40,7 +41,11 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['admin/dashboard']);          
         }
         else{
-          this.router.navigate(['']);
+          this.router.navigate(['']).then(
+            ()=>{
+              window.location.reload();
+            }
+          );
         }
         // window.location.reload();
       }

@@ -13,13 +13,13 @@ export class UsermanagementComponent implements OnInit {
   displayedColumns: string[] = ['id','firstName','lastName','contactNumber','email','password','role','editoption'];
   constructor(private userService:UserServiceService) { 
 
-    this.users=MOCK_USERS;
+    // this.users=MOCK_USERS;
     // dataSource = ELEMENT_DATA;
-    // this.userService.listAllUsers().subscribe(
-    // (data)=>{
-    //   this.users=data;
-    // }
-    // );
+    this.userService.listAllUsers().subscribe(
+    (data)=>{
+      this.users=data;
+    }
+    );
   }
 
   ngOnInit(): void {

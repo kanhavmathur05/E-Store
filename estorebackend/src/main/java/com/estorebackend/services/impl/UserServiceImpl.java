@@ -12,6 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -58,8 +59,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Page<Users> getAllUsers(Pageable pageable) {
-        Page<Users> usersList = userRepository.findAll(pageable);
+    public List<Users> getAllUsers() {
+        List<Users> usersList = userRepository.findAll();
         return usersList;
     }
 }

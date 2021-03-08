@@ -5,6 +5,8 @@ import com.estorebackend.vm.AuthenticationRequest;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface UserService {
     Users registerNewUser(Users users);
 
@@ -14,5 +16,5 @@ public interface UserService {
 
     Users getUserByCredentails(AuthenticationRequest authenticationRequest);
 
-    Page<Users> getAllUsers(Pageable pageable);
+    List<Users> getAllUsers();
 }

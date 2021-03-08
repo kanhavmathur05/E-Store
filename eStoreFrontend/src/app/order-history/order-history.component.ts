@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { OrderHistory } from '../models/OrderHistory';
 import { Orders } from '../models/orders';
 import { OrdersServiceService } from '../services/orders-service.service';
 
@@ -10,7 +11,7 @@ import { OrdersServiceService } from '../services/orders-service.service';
 })
 export class OrderHistoryComponent implements OnInit {
 
-  ordersHistoryList:Orders[];
+  ordersHistoryList:OrderHistory[];
 
   constructor(private route:ActivatedRoute, private orderHistoryService:OrdersServiceService) { 
     console.log('ajhfksdhfkfjsdhf',this.route.snapshot.paramMap.get('id'));
@@ -19,7 +20,6 @@ export class OrderHistoryComponent implements OnInit {
         this.ordersHistoryList=data;
       }
     );
-
   }
 
   ngOnInit(): void {

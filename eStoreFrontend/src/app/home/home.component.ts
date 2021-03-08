@@ -18,35 +18,50 @@ export class HomeComponent implements OnInit {
   cartProduct:CartProducts;
   product:Products;
   productsList:Products[];
+  cartDetails:Cart;
+
   constructor(private cartService:CartServiceService, private productService:ProductServiceService,private route:Router) { 
-    this.productsList=PRODUCTS_LIST;
+    this.productService.listAllProducts().subscribe(
+      (data)=>{
+        this.productsList=data;
+      }
+    );
+    // this.productsList=PRODUCTS_LIST;
   }
 
   addToCart(id:string) {
 
-    console.log('ID Of the Product::::::::::::>>>>>>>>>>',id);
+    this.cartService.getUserCart(JSON.stringify(sessionStorage.getItem('userId'))).subscribe(
+      (data)=>{
+        this.cartDetails=data;
+        this.cartProduct.cartId=this.cartDetails.id;
+        this.cartProduct.userId=this.cartDetails.userId;
+      }
+    );
 
-    this.productService.viewProduct(id).subscribe(
-      (data)=>{
-        this.product=data;
-      }
-    );
-    this.cartProduct.productId=this.product.id;
-    this.cartProduct.quantity=1;  //It will be changes when user will get the option to change the quantity of product to order
-    this.cartProduct.total=this.product.price;
-    this.cartProduct.userId=parseInt(sessionStorage.getItem('userId'));
-    this.cartService.getUserCart(JSON.stringify(this.cartProduct.userId)).subscribe(
-      (data)=>{
-        this.cartProduct.cartId=data.id;
-      }
-    );
-    this.cartService.addToCart(this.cartProduct).subscribe(
-      (data)=>{
-      }
-    );
-    this.route.navigate(['cart',this.cartProduct.userId]).then(
-      ()=>{window.location.reload();}
-    )        
+    // this.productService.viewProduct(id).subscribe(
+    //   (data)=>{
+    //     this.product=data;
+    //     this.cartProduct.productId=this.product.id;
+    //     this.cartProduct.quantity=this.product.availableQuantity;
+    //     this.cartProduct.total=this.product.price;
+    //   }
+    // );
+    // let cartProducts:CartProducts={
+    //   id:null,
+    //   cartId:this.cartDetails.id,
+    //   productId:this.product.id,
+    //   quantity:this.product.availableQuantity,
+    //   total:this.product.price,
+    //   userId:this.cartDetails.userId
+    // }
+    // this.cartService.addToCart(this.cartProduct).subscribe(
+    //   (data)=>{
+    // //       this.route.navigate(['cart',this.cartProduct.userId]).then(
+    // //   ()=>{window.location.reload();}
+    // // )
+    //   }
+    // );        
   }
   ngOnInit(): void {
 

@@ -36,7 +36,7 @@
       <td mat-cell *matCellDef="let element">
           <!-- <button mat-button routerLink="/userinfo/{{element.id}}"><mat-icon>edit</mat-icon></button>     -->
           <button mat-button (click)="deleteProduct(element.id)"><mat-icon>delete</mat-icon></button>
-          <button mat-button routerLink="../../product/{{element.id}}"><mat-icon>edit</mat-icon></button>
+          <button mat-button routerLink="../../update-product/{{element.id}}"><mat-icon>edit</mat-icon></button>
       </td>
   </ng-container>
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

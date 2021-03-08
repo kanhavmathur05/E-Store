@@ -9,7 +9,7 @@ import { User } from '../models/user';
 })
 export class HeaderComponent implements OnInit {
 
-  loggedIn:boolean;
+  customerLoggedIn:boolean;
   user:User={
     id:123,
     firstName:"adsfafds",
@@ -20,22 +20,25 @@ export class HeaderComponent implements OnInit {
     role:"ROLE_USER"
   };
   constructor(private router:Router) { 
-    if(sessionStorage.getItem('userId')!=null)
+    if(sessionStorage.getItem('userRole')==="ROLE_USER")
     {
-      this.loggedIn=true;
+      this.customerLoggedIn=true;
     }
     else
     {
-      this.loggedIn=false;
+      this.customerLoggedIn=false;
     }
 //    console.log('ROUTER URL By CONSOLE---->',this.router.url);
   }
   logoutUser()
   {
     sessionStorage.clear();
-    this.loggedIn=false;
-    this.router.navigate(['']);
-    window.location.reload();
+    this.customerLoggedIn=false;
+    this.router.navigate(['']).then(
+      ()=>{
+        window.location.reload();
+      }
+    );
   }
   ngOnInit(): void {
   }

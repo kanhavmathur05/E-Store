@@ -1,32 +1,39 @@
 package com.estorebackend.resources;
 
 import com.estorebackend.entities.Orders;
+import com.estorebackend.services.CartProductsService;
+import com.estorebackend.services.CartService;
 import com.estorebackend.services.OrdersService;
+import com.estorebackend.vm.OrdersVM;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin
 @RestController
 public class OrdersResources {
 
     @Autowired
     OrdersService ordersService;
 
+    @Autowired
+    CartProductsService cartProductsService;
+
     @GetMapping("/order-history/{userId}")
-    public ResponseEntity<Page<Orders>> getUsersOrderHistory(@PathVariable int userId, Pageable pageable) {
-        Page<Orders> orderHistory = ordersService.getOrderHistoryListByUserId(userId, pageable);
+    public ResponseEntity<List<OrdersVM>> getUsersOrderHistory(@PathVariable int userId) {
+        List<OrdersVM> orderHistory = ordersService.getOrderHistoryListByUserId(userId);
         return ResponseEntity.status(HttpStatus.OK).body(orderHistory);
     }
 
-//    @GetMapping("/placeOrder/{userId}")
-//    public ResponseEntity<?> placeOrder(@PathVariable int userId)
-//    {
-//
-//    }
+    @GetMapping("/place-order/{userId}")
+    public ResponseEntity<Void> placeOrder(@PathVariable int userId)
+    {
+        cartProductsService.placeOrder(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(null);
+    }
 }

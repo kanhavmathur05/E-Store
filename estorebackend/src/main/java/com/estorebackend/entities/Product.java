@@ -22,7 +22,15 @@ public class Product {
     private int availableQuantity;
     private LocalDate addedDate;
     private LocalDate updatedDate;
-    private boolean inStock;
+    private String productImage;
+
+    public String getProductImage() {
+        return productImage;
+    }
+
+    public void setProductImage(String productImage) {
+        this.productImage = productImage;
+    }
 
     public int getId() {
         return id;
@@ -80,11 +88,4 @@ public class Product {
         this.updatedDate = updatedDate;
     }
 
-    public boolean isInStock() {
-        return inStock;
-    }
-
-    public void setInStock(boolean inStock) {
-        this.inStock = inStock;
-    }
 }

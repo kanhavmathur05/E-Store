@@ -14,12 +14,12 @@ export class ProductManagementComponent implements OnInit {
   displayedColumns: string[] = ['id','productName','description','price','availableQuantity','options'];
   productsList:Products[];
   constructor(private productService:ProductServiceService, private router:Router) {
-    // this.productService.listAllProducts().subscribe(
-    //   (data)=>{
-    //     this.productsList=data;
-    //   }
-    // );
-    this.productsList=PRODUCTS_LIST;
+    this.productService.listAllProducts().subscribe(
+      (data)=>{
+        this.productsList=data;
+      }
+    );
+    // this.productsList=PRODUCTS_LIST;
    }
 
    deleteProduct(id:string) {

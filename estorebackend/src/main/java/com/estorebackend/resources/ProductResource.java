@@ -9,6 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin
 @RestController
 public class ProductResource {
 
@@ -34,8 +37,8 @@ public class ProductResource {
     }
 
     @GetMapping("/list-all-products")
-    public ResponseEntity<Page<Product>> listAllProducts(Pageable pageable) {
-        Page<Product> listOfProducts = productService.getAllProducts(pageable);
+    public ResponseEntity<List<Product>> listAllProducts(Pageable pageable) {
+        List<Product> listOfProducts = productService.getAllProducts();
         return ResponseEntity.status(HttpStatus.OK).body(listOfProducts);
     }
 

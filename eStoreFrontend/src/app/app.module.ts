@@ -24,6 +24,7 @@ import { OrderHistoryComponent } from './order-history/order-history.component';
 import { ProductManagementComponent } from './product-management/product-management.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { UpdateProductComponent } from './update-product/update-product.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -36,7 +37,8 @@ const appRoutes: Routes = [
   { path:'admin/dashboard', component:AdminDashboardComponent },
   { path:'order-history/:id',component:OrderHistoryComponent },
   { path:'admin/products', component:ProductManagementComponent },
-  { path:'admin/addproduct', component:AddProductComponent}
+  { path:'admin/addproduct', component:AddProductComponent},
+  { path:'update-product/:id',component:UpdateProductComponent }
 
 ];
 
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
     AdminDashboardComponent,
     OrderHistoryComponent,
     ProductManagementComponent,
-    AddProductComponent
+    AddProductComponent,
+    UpdateProductComponent
   ],
   imports: [
     BrowserModule,
